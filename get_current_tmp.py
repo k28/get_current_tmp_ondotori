@@ -30,10 +30,8 @@ def load_access_info():
 
     return api_info
 
-dict = load_access_info()
-parameter = json.dumps(dict)
-
-response = requests.post(API_URI_GET_CURRENT, parameter, headers={'Content-Type': 'application/json', 'X-HTTP-Method-Override': 'GET'})
+access_param_info = load_access_info()
+response = requests.post(API_URI_GET_CURRENT, json.dumps(access_param_info), headers={'Content-Type': 'application/json', 'X-HTTP-Method-Override': 'GET'})
 
 # debug
 pprint.pprint(response.json())
