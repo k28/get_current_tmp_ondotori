@@ -99,13 +99,13 @@ def watchdog(current_info):
         last_access_unixtime = device["unixtime"]
         if (current_time - float(last_access_unixtime)) > WATCH_THRESHOLD:
             if not is_device_exist(serial, stop_device_info):
-                pprint.pprint("No Response: "serial + " " + name + " ")
+                pprint.pprint("No Response: " + serial + " " + name + " ")
                 add_device_to_stopped_list(device, stop_device_info)
                 # TODO: 通信が途絶えている機器を見つけた時の処理
         else:
             if is_device_exist(serial, stop_device_info):
                 # TODO: 通信が途絶えていた機器が復帰した
-                pprint.pprint("Recoverd: "serial + " " + name + " ")
+                pprint.pprint("Recoverd: " + serial + " " + name + " ")
                 remove_form_stop_list(serial, stop_device_info)
 
     # 機器情報を保存する
